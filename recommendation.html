@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recommendation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto','ui-sans-serif','system-ui','-apple-system','Segoe UI','Noto Sans','Helvetica','Arial','sans-serif','Apple Color Emoji','Segoe UI Emoji']
+          }
+        }
+      }
+    }
+  </script>
+  <meta name="color-scheme" content="light" />
+</head>
+<body class="font-sans text-lg text-gray-900 bg-white antialiased">
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-blue-700 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:outline-none">Skip to main content</a>
+
+  <!-- Mobile top bar -->
+  <header class="lg:hidden sticky top-0 z-40 bg-white border-b border-gray-200">
+    <div class="max-w-screen-2xl mx-auto flex items-center justify-between px-4 h-14">
+      <button id="menu-button" aria-controls="mobile-drawer" aria-expanded="false" class="inline-flex items-center gap-2 px-3 py-2 rounded border border-gray-300 text-gray-800 bg-white hover:bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Menu</span>
+      </button>
+      <div class="text-base font-semibold">Recommendation</div>
+      <span class="w-9" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <!-- Mobile drawer & backdrop -->
+  <div id="backdrop" class="lg:hidden fixed inset-0 bg-black/50 hidden" aria-hidden="true"></div>
+  <aside id="mobile-drawer" class="lg:hidden fixed inset-y-0 left-0 w-72 bg-white border-r border-gray-200 translate-x-[-100%] transition-transform duration-200 ease-out will-change-transform hidden" aria-label="Primary" role="dialog" aria-modal="true">
+    <div class="h-14 px-4 border-b border-gray-200 flex items-center justify-between">
+      <span class="font-semibold">Navigation</span>
+      <button id="close-button" class="inline-flex items-center justify-center p-2 rounded border border-gray-300 text-gray-800 bg-white hover:bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">
+        <span class="sr-only">Close menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav class="p-3 overflow-y-auto" aria-label="Primary">
+      <ul class="space-y-1">
+        <li><a  href="index.html" class="block rounded px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">Home</a></li>
+        <li><a  href="risk-score.html" class="block rounded px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">Risk Score</a></li>
+        <li><a  href="risk-factors.html" class="block rounded px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">Risk Factors</a></li>
+        <li><a aria-current="page" href="recommendation.html" class="block rounded px-3 py-2 bg-blue-50 text-blue-700 font-medium focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">Recommendation</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="flex">
+      <!-- Desktop vertical nav -->
+      <aside class="hidden lg:flex lg:flex-col lg:w-64 lg:h-screen lg:sticky lg:top-0 border-r border-gray-200 bg-white" aria-label="Primary">
+        <div class="h-16 flex items-center px-4 border-b border-gray-200">
+          <span class="text-xl font-semibold">Navigation</span>
+        </div>
+        <nav class="flex-1 overflow-y-auto p-3">
+          <ul class="space-y-1">
+            <li><a  href="index.html" class="flex items-center rounded px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">Home</a></li>
+            <li><a  href="risk-score.html" class="flex items-center rounded px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">Risk Score</a></li>
+            <li><a  href="risk-factors.html" class="flex items-center rounded px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">Risk Factors</a></li>
+            <li><a aria-current="page" href="recommendation.html" class="flex items-center rounded px-3 py-2 bg-blue-50 text-blue-700 font-medium focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">Recommendation</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main content -->
+      <main id="main" class="flex-1 min-w-0 p-6 lg:p-10">
+        <h1 class="text-3xl lg:text-4xl font-bold text-blue-700">Recommendations</h1>
+        <p class="mt-4 leading-relaxed">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book..</p>
+      </main>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
